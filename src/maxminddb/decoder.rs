@@ -1,4 +1,3 @@
-use log::debug;
 use serde::de::{self, DeserializeSeed, MapAccess, SeqAccess, Visitor};
 use serde::forward_to_deserialize_any;
 use serde::serde_if_integer128;
@@ -351,8 +350,6 @@ impl<'de: 'a, 'a> de::Deserializer<'de> for &'a mut Decoder<'de> {
     where
         V: Visitor<'de>,
     {
-        debug!("deserialize_any");
-
         self.decode_any(visitor)
     }
 
@@ -360,8 +357,6 @@ impl<'de: 'a, 'a> de::Deserializer<'de> for &'a mut Decoder<'de> {
     where
         V: Visitor<'de>,
     {
-        debug!("deserialize_option");
-
         visitor.visit_some(self)
     }
 
